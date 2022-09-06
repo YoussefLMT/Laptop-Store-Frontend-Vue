@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                            <button class="btn btn-primary" type="button">Login</button>
+                            <button class="btn btn-primary" @click="login" type="button">Login</button>
                         </div>
                     </form>
                 </div>
@@ -40,7 +40,7 @@ export default {
     components: {
         NavBar
     },
-     data() {
+    data() {
         return {
             userData: {
                 email: '',
@@ -50,6 +50,34 @@ export default {
             errors: ''
         }
     },
+    methods: {
+        async login() {
+             try {
+                const response = await axios.post("http://127.0.0.1:8000/api/login",
+                    this.userData)
+                if (response.data.status === 401) {
+                    this.message = response.data.message
+                } else if (response.data.role === 'user') {
+                    this.$router.push('/user')
+                    store.commit('setUserRole', response.data.role)
+                    store.state.user.data.token = response.data.token
+                    localStorage.setItem('token', response.data.token)
+                    localStorage.setItem('role', response.data.role)
+                } else if (response.data.role === 'admin') {
+                    
+                    this.$router.push('/dashboard')
+                    store.commit('setUserRole', response.data.role)
+                    store.state.user.data.token = response.data.token
+                    localStorage.setItem('token', response.data.token)
+                    localStorage.setItem('role', response.data.role)
+                } else {
+                    this.errors = response.data.validation_err
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 }
 </script>
 
