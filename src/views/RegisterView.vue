@@ -13,19 +13,19 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name" required />
+                                    <input class="form-control" v-model="userData.name" id="name" type="text" placeholder="Enter your name" required />
                                     <label for="name">Name</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="email" id="inputEmail" type="email" placeholder="name@example.com" required />
+                            <input class="form-control" v-model="userData.email" id="inputEmail" type="email" placeholder="name@example.com" required />
                             <label for="inputEmail">Email address</label>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Create a password" required />
+                                    <input class="form-control" v-model="userData.password" id="inputPassword" type="password" placeholder="Create a password" required />
                                     <label for="inputPassword">Password</label>
                                 </div>
                             </div>
@@ -51,6 +51,17 @@ import NavBar from '@/components/NavBar.vue'
 export default {
     components: {
         NavBar
+    },
+     data() {
+        return {
+            userData: {
+                name: '',
+                email: '',
+                password: ''
+            },
+            message: '',
+            errors: ''
+        }
     },
 }
 </script>
