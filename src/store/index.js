@@ -11,7 +11,9 @@ export default createStore({
     
   },
   mutations: {
-    
+    setUserRole(state, role){
+      state.user.data.role = role
+    }
   },
   actions: {
 
