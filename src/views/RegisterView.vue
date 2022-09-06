@@ -32,7 +32,7 @@
 
                         </div>
                         <div class="mt-4 mb-0">
-                            <div class="d-grid"><button type="button" class="btn btn-primary btn-block">Create Account</button></div>
+                            <div class="d-grid"><button type="button" @click="register" class="btn btn-primary btn-block">Create Account</button></div>
                         </div>
                     </form>
                 </div>
@@ -47,6 +47,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import axiosInstance from '../axios'
 
 export default {
     components: {
@@ -63,6 +64,21 @@ export default {
             errors: ''
         }
     },
+    methods:{
+        async register(){
+             try {
+                const response = await axiosInstance.post("/register",this.userData)
+
+                if (response.data.status === 200) {
+                    console.log(response.data.message)
+                } else {
+                    console.log(response.data.validation_err) 
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 }
 </script>
 
