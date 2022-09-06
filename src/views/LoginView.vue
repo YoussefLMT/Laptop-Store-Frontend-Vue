@@ -11,11 +11,11 @@
                 <div class="card-body">
                     <form>
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="email" name="email" placeholder="name@example.com" />
+                            <input class="form-control" v-model="userData.email" type="email" name="email" placeholder="name@example.com" />
                             <label for="inputEmail">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="password" name="pass" placeholder="Password" />
+                            <input class="form-control" v-model="userData.password" type="password" name="pass" placeholder="Password" />
                             <label for="inputPassword">Password</label>
                         </div>
 
@@ -39,6 +39,16 @@ import NavBar from '@/components/NavBar.vue'
 export default {
     components: {
         NavBar
+    },
+     data() {
+        return {
+            userData: {
+                email: '',
+                password: ''
+            },
+            message: '',
+            errors: ''
+        }
     },
 }
 </script>
