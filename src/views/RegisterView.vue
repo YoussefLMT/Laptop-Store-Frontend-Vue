@@ -1,0 +1,59 @@
+<template>
+<NavBar />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input class="form-control" v-model="userData.name" name="name" id="name" type="text" placeholder="Enter your name" required />
+                                    <label for="name">Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="email" v-model="userData.email" id="inputEmail" type="email" placeholder="name@example.com" required />
+                            <label for="inputEmail">Email address</label>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input class="form-control" name="password" v-model="userData.password" id="inputPassword" type="password" placeholder="Create a password" required />
+                                    <label for="inputPassword">Password</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid"><button type="button" class="btn btn-primary btn-block">Create Account</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <router-link class="small" to="/">Have an account? Go to login</router-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+import NavBar from '@/components/NavBar.vue'
+
+export default {
+    components: {
+        NavBar
+    },
+}
+</script>
+
+<style>
+</style>
