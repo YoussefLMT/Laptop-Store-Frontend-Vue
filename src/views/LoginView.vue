@@ -75,7 +75,7 @@ export default {
 
                 } else if (response.data.role === 'admin') {
 
-                    // this.$router.push('/dashboard')
+                    this.$router.push('/dashboard')
                     store.commit('setUserRole', response.data.role)
                     store.state.user.token = response.data.token
                     localStorage.setItem('token', response.data.token)
