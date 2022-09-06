@@ -12,7 +12,7 @@ export default createStore({
   },
   mutations: {
     setUserRole(state, role){
-      state.user.data.role = role
+      state.user.role = role
     }
   },
   actions: {
