@@ -1,3 +1,4 @@
+import store from '@/store';
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -28,13 +29,38 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('../views/DashboardView.vue')
+    component: () => import('../views/DashboardView.vue'),
+    meta:{
+      requiresAuth: true
+    },
+    beforeEnter: (to, from, next) => {
+      if(store.state.user.token){
+        if(store.state.user.role !== "admin"){
+          next({name: 'notFound'});
+        }else{
+          next()
+        }
+      }else{
+        next({name: 'login'})
+      }
+    }
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiresAuth && !store.state.user.token) {
+    next({ name: 'login' });
+  } else{
+    next()
+  }
+});
 
 export default router
