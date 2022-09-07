@@ -57,6 +57,11 @@ export default {
             errors: ''
         }
     },
+    mounted(){
+        if(localStorage.getItem('token')){
+            this.$router.push('/')
+        }
+    },
     methods: {
         async login() {
             try {

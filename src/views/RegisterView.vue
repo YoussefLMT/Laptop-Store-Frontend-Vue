@@ -69,6 +69,11 @@ export default {
             errors: ''
         }
     },
+    mounted() {
+        if (localStorage.getItem('token')) {
+            this.$router.push('/')
+        }
+    },
     methods: {
         async register() {
             try {
