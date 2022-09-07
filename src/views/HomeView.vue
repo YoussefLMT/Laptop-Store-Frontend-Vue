@@ -15,7 +15,7 @@
             </div>
 
             <div class="col-md-6">
-                <div class="image">
+                <div class="image d-none d-sm-block">
                     <img src="@/assets/laptop.png">
                 </div>
             </div>
@@ -38,7 +38,7 @@ export default {
 <style scoped>
 .image {
     width: 480px;
-    margin-left: 90px;
+    margin-left: 130px;
     margin-top: 50px;
 }
 

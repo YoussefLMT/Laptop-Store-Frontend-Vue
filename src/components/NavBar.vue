@@ -16,18 +16,20 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Home</router-link>
                     </li>
+                     <li class="nav-item">
+                        <router-link class="nav-link" to="/">Products</router-link>
+                    </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/#">About</router-link>
                     </li>
-
                     <li class="nav-item">
                         <router-link class="nav-link" to="/#">Contact</router-link>
                     </li>
+
                     <div v-if="!this.$store.state.user.token" class="d-flex">
                         <li class="nav-item">
                             <router-link class="nav-link" to="/login">Login</router-link>
                         </li>
-
                         <li class="nav-item">
                             <router-link class="nav-link" to="/register">Register</router-link>
                         </li>
@@ -37,11 +39,9 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/#">Cart (0)</router-link>
                         </li>
-
                         <li class="nav-item">
                             <router-link class="nav-link" to="/#">My Orders</router-link>
                         </li>
-
                         <li class="nav-item">
                             <button type="button" class="btn btn-danger">Log Out</button>
                         </li>
