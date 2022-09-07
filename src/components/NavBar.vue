@@ -16,7 +16,7 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Home</router-link>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <router-link class="nav-link" to="/">Products</router-link>
                     </li>
                     <li class="nav-item">
@@ -56,6 +56,7 @@
 
 <script>
 import axiosInstance from '../axios'
+import Swal from 'sweetalert2'
 
 export default {
     methods: {
@@ -67,9 +68,16 @@ export default {
                     localStorage.removeItem('token')
                     localStorage.removeItem('role')
 
+                    Swal.fire({
+                        title: 'success',
+                        text: response.data.message,
+                        icon: 'success',
+                    })
+
+                    this.$router.push('/login')
+
                 }
-            } catch (error) {
-            }
+            } catch (error) {}
         }
     }
 }
