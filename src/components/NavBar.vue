@@ -43,7 +43,7 @@
                             <router-link class="nav-link" to="/#">My Orders</router-link>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-danger">Log Out</button>
+                            <button type="button" @click="logOut" class="btn btn-danger">Log Out</button>
                         </li>
                     </div>
 
@@ -55,7 +55,24 @@
 </template>
 
 <script>
-export default {}
+import axiosInstance from '../axios'
+
+export default {
+    methods: {
+        async logOut() {
+            try {
+                const response = await axiosInstance.post("/logout")
+                if (response.data.status === 200) {
+
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('role')
+
+                }
+            } catch (error) {
+            }
+        }
+    }
+}
 </script>
 
 <style scoped>
