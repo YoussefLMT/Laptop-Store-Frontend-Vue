@@ -20,6 +20,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="row cards">
+            <div class="col-md-4 card">
+                <img src="@/assets/delivery.png">
+                <p>Free Shipping</p>
+            </div>
+            <div class="col-md-4 card">
+                <img src="@/assets/order.png">
+                <p>Online Order</p>
+            </div>
+            <div class="col-md-4 card">
+                <img src="@/assets/products.png">
+                <p>Awesome Prducts</p>
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -46,8 +61,8 @@ export default {
     width: 100%;
 }
 
-.left-side{
-  margin-top: 150px;
+.left-side {
+    margin-top: 150px;
 }
 
 h2 {
@@ -55,14 +70,44 @@ h2 {
     font-size: 50px;
 }
 
-p{
-  font-size: 18px;
-  margin-top: 20px;
+p {
+    font-size: 18px;
+    margin-top: 20px;
 }
 
-.btn-primary{
-  border-radius: 20px;
-  font-weight: bold;
-  margin-top: 15px;
+.btn-primary {
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cards{
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card{
+    width: 300px;
+    height: 300px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+}
+
+.card p{
+    text-align: center;
+    font-weight: bold;
+    background: #0B5ED7;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
