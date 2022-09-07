@@ -27,6 +27,11 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
+    path: '/404',
+    name: 'notFound',
+    component: () => import('../views/NotFoundView.vue')
+  },
+  {
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../views/DashboardView.vue'),
