@@ -9,16 +9,10 @@ const menu = [
         icon: 'fa fa-user'
     },
     {
-        href: '/charts',
-        title: 'Charts',
-        icon: 'fa fa-chart-area',
-        child: [
-            {
-                href: '/charts/sublink',
-                title: 'Sub Link'
-            }
-        ]
-    }
+        href: '/products',
+        title: 'Products',
+        icon: 'fa-solid fa-shop'
+    },
 ]
 
 export default menu;
