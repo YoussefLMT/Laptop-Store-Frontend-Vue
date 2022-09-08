@@ -3,7 +3,7 @@
 
 <main>
     <h1>Products</h1>
-    <div class="card products" style="width: 1000px;">
+    <div class="card products" style="width: 1200px;">
         <div class="card-header">
             Products Managment
 
@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <div v-if="loading" class="spinner">
-                    Loading...
+                    <h3>Loading...</h3>
                 </div>
                 <tbody v-else>
                     <tr v-for="product in products" :key="product.id">
@@ -152,6 +152,7 @@ export default {
 
                 if (response.data.status === 200) {
                     this.message = response.data.message
+                    store.dispatch('getProducts')
                 } else {
                     this.errors = response.data.validation_err
                 }
