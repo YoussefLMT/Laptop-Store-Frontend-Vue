@@ -36,6 +36,10 @@
                         <td>{{ product.quantity }}</td>
                         <td>{{ product.description }}</td>
                         <td><img :src="'http://127.0.0.1:8000/' + product.image"></td>
+                        <td>
+                            <button type="button" @click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+                            <router-link to="/#" class="btn btn-warning">Update</router-link>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -157,6 +161,15 @@ export default {
                 this.product.quantity = ''
                 this.product.description = ''
 
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async deleteProduct(id) {
+            try {
+                await axiosInstance.delete(`/delete-product/${id}`)
+                store.dispatch('getProducts')
             } catch (error) {
                 console.log(error)
             }
