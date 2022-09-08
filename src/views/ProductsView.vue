@@ -96,6 +96,7 @@ import {
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import axiosInstance from '../axios'
+import store from '@/store'
 
 export default {
     components: {
@@ -113,6 +114,17 @@ export default {
             },
             message: '',
             errors: '',
+        }
+    },
+     mounted() {
+        store.dispatch('getProducts')
+    },
+    computed: {
+        products() {
+            return store.getters.products
+        },
+        loading() {
+            return store.getters.loading
         }
     },
     methods: {

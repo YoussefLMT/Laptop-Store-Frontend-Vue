@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import axiosInstance from '../axios'
 
 export default createStore({
   state: {
