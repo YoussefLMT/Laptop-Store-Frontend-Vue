@@ -1,7 +1,7 @@
 <template>
-<SidebarMenu :menu="menu" />
+<SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse"/>
 
-<main>
+<main :class="{ 'mll': collapsed }">
     <h1>Products</h1>
     <div class="card products" style="width: 1200px;">
         <div class="card-header">
@@ -112,6 +112,7 @@ export default {
     data() {
         return {
             menu,
+            collapsed: false,
             product: {
                 name: '',
                 price: '',
@@ -174,7 +175,15 @@ export default {
             } catch (error) {
                 console.log(error)
             }
-        }
+        },
+
+        onToggleCollapse(collapsed) {
+            if(collapsed){
+                this.collapsed = true
+            }else{
+                this.collapsed = false
+            }
+        },
     }
 }
 </script>
@@ -195,5 +204,10 @@ main {
 
 img {
     width: 50px;
+}
+
+.mll{
+    margin-left: 70px;
+    transition: .3s ease-out;
 }
 </style>
