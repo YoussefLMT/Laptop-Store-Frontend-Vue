@@ -36,7 +36,10 @@
             </div>
         </div>
 
-<Product/>
+        <h2 class="text-center mb-5 mt-5">Latest Products</h2>
+
+
+        <Product />
     </div>
 </div>
 </template>

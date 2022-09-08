@@ -1,8 +1,7 @@
 <template>
-<h3 class="text-center mb-5">Special Price!</h3>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 15rem;">
                     <img class="card-img-top tt" src="@/assets/laptop.png">
                     <div class="card-body">
                         <h5 class="card-title">test</h5>
@@ -18,6 +17,9 @@ export default {
     
 }
 </script>
-<style lang="">
-    
+<style scoped>
+.tt{
+   width: 230px;
+   height: 230px;
+}
 </style>
