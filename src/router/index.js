@@ -35,21 +35,40 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../views/DashboardView.vue'),
-    meta:{
+    meta: {
       requiresAuth: true
     },
     beforeEnter: (to, from, next) => {
-      if(store.state.user.token){
-        if(store.state.user.role !== "admin"){
-          next({name: 'notFound'});
-        }else{
+      if (store.state.user.token) {
+        if (store.state.user.role !== "admin") {
+          next({ name: 'notFound' });
+        } else {
           next()
         }
-      }else{
-        next({name: 'login'})
+      } else {
+        next({ name: 'login' })
       }
     }
-  }
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: () => import('../views/ProductsView.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.token) {
+        if (store.state.user.role !== "admin") {
+          next({ name: 'notFound' });
+        } else {
+          next()
+        }
+      } else {
+        next({ name: 'login' })
+      }
+    }
+  },
 ]
 
 
@@ -63,7 +82,7 @@ router.beforeEach((to, from, next) => {
 
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({ name: 'login' });
-  } else{
+  } else {
     next()
   }
 });
