@@ -35,17 +35,20 @@
                 <p>Awesome Prducts</p>
             </div>
         </div>
+
+<Product/>
     </div>
 </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-
+import Product from '@/components/Product.vue'
 export default {
     name: 'HomeView',
     components: {
         NavBar,
+        Product
     }
 }
 </script>
@@ -81,24 +84,24 @@ p {
     margin-top: 15px;
 }
 
-.cards{
+.cards {
     margin-top: 120px;
     display: flex;
     justify-content: space-around;
 }
 
-.card{
+.card {
     width: 300px;
     height: 300px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.card img{
+.card img {
     width: 100%;
     height: 100%;
 }
 
-.card p{
+.card p {
     text-align: center;
     font-weight: bold;
     background: #0B5ED7;
@@ -107,7 +110,7 @@ p {
     color: white;
 }
 
-.card:hover{
+.card:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
