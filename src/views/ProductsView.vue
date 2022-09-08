@@ -25,14 +25,17 @@
                         <th scope="col">actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">test</th>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td><img src="@/assets/laptop.png"></td>
+                <div v-if="loading" class="spinner">
+                    Loading...
+                </div>
+                <tbody v-else>
+                    <tr v-for="product in products" :key="product.id">
+                        <th scope="row">{{ product.id }}</th>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.description }}</td>
+                        <td><img :src="'http://127.0.0.1:8000/' + product.image"></td>
                     </tr>
                 </tbody>
             </table>
@@ -116,7 +119,7 @@ export default {
             errors: '',
         }
     },
-     mounted() {
+    mounted() {
         store.dispatch('getProducts')
     },
     computed: {
