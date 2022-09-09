@@ -1,5 +1,5 @@
 <template>
-<SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse"/>
+<SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse" />
 
 <main :class="{ 'mll': collapsed }">
     <h1>Products</h1>
@@ -178,9 +178,9 @@ export default {
         },
 
         onToggleCollapse(collapsed) {
-            if(collapsed){
+            if (collapsed) {
                 this.collapsed = true
-            }else{
+            } else {
                 this.collapsed = false
             }
         },
@@ -192,6 +192,7 @@ export default {
 main {
     margin-left: 300px;
     padding: 20px;
+    transition: .3s ease-out;
 }
 
 .products {
@@ -206,8 +207,7 @@ img {
     width: 50px;
 }
 
-.mll{
+.mll {
     margin-left: 70px;
-    transition: .3s ease-out;
 }
 </style>

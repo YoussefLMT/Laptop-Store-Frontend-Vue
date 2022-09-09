@@ -47,6 +47,9 @@
                         </li>
                     </div>
 
+                    <li class="nav-item" v-if="this.$store.state.user.role === 'admin'">
+                        <router-link class="nav-link" to="/dashboard">Dahboard</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
