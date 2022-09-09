@@ -1,6 +1,6 @@
 <template>
-<div class="row">
-    <div class="col-md-4">
+<!-- <div class="row"> -->
+    <!-- <div class="col-md-4"> -->
         <div class="card" style="width: 15rem;">
             <img class="card-img-top w-100" :src="image">
             <div class="card-body">
@@ -12,8 +12,8 @@
                 <a href="/#" class="btn btn-primary">Show Product</a>
             </div>
         </div>
-    </div>
-</div>
+    <!-- </div> -->
+<!-- </div> -->
 </template>
 
 <script>
@@ -23,5 +23,11 @@ export default {
 </script>
 
 <style scoped>
+.card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 </style>

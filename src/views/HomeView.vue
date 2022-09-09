@@ -36,10 +36,23 @@
             </div>
         </div>
 
-        <h2 class="text-center mb-5 mt-5">Latest Products</h2>
+        <h2 class="text-center latest-products">Latest Products</h2>
 
+        <div class="row">
+            <div class="col-md-3">
+                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
+            </div>
+            <div class="col-md-3">
+                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
+            </div>
+            <div class="col-md-3">
+                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
+            </div>
+            <div class="col-md-3">
+                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
+            </div>
+        </div>
 
-        <Product />
     </div>
 </div>
 </template>
@@ -115,5 +128,10 @@ p {
 
 .card:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.latest-products {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 </style>
