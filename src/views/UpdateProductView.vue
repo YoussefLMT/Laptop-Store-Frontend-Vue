@@ -11,18 +11,26 @@
                 <div class="mb-3">
                     <label for="fname" class="form-label">Name</label>
                     <input type="text" class="form-control" id="fname" v-model="product.name">
+                    <span class="text-danger" v-if="errors.name">{{ errors.name[0] }}</span>
+
                 </div>
                 <div class="mb-3">
                     <label for="lname" class="form-label">Price</label>
                     <input type="text" class="form-control" id="lname" v-model="product.price">
+                    <span class="text-danger" v-if="errors.price">{{ errors.price[0] }}</span>
+
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Quantity</label>
                     <input type="text" class="form-control" id="email" v-model="product.quantity">
+                    <span class="text-danger" v-if="errors.quantity">{{ errors.quantity[0] }}</span>
+
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" rows="3" v-model="product.description"></textarea>
+                    <span class="text-danger" v-if="errors.description">{{ errors.description[0] }}</span>
+
                 </div>
                 <button type="button" @click="updateProduct" class="btn btn-primary">Update Product</button>
             </form>
@@ -38,6 +46,7 @@ import {
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import axiosInstance from '../axios'
+import Swal from 'sweetalert2'
 
 export default {
     components: {
@@ -54,6 +63,7 @@ export default {
                 description: '',
                 image: ''
             },
+            errors: ''
         }
     },
     mounted() {
@@ -81,11 +91,25 @@ export default {
             try {
                 const response = await axiosInstance.put(`/update-product/${this.$route.params.id}`, this.product)
                 if (response.data.status === 200) {
-                    // this.message = response.data.message
-                    console.log(response.data.message)
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
                 } else if (response.data.status === 422) {
-                    // this.errors = response.data.validation_err
-                    console.log(response.data.validation_err)
+                    this.errors = response.data.validation_err
                 }
             } catch (error) {
                 console.log(error)
