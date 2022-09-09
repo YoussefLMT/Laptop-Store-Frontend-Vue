@@ -38,7 +38,7 @@
                         <td><img :src="'http://127.0.0.1:8000/' + product.image"></td>
                         <td>
                             <button type="button" @click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
-                            <router-link to="/#" class="btn btn-warning">Update</router-link>
+                            <router-link :to="{ name: 'updateProduct', params: {id: product.id }}" class="btn btn-warning">Update</router-link>
                         </td>
                     </tr>
                 </tbody>
