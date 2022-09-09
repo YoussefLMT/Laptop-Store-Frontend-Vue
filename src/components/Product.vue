@@ -1,8 +1,8 @@
 <template>
 <!-- <div class="row"> -->
     <!-- <div class="col-md-4"> -->
-        <div class="card" style="width: 15rem;">
-            <img class="card-img-top w-100" :src="image">
+        <div class="card">
+            <img class="card-img-top" :src="image">
             <div class="card-body">
                 <h5 class="card-title">{{ name }}</h5>
                 <div class="d-flex justify-content-between">
@@ -29,5 +29,10 @@ export default {
 
 .card:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+img{
+    width: 100%;
+    height: 130px;
 }
 </style>
