@@ -39,17 +39,8 @@
         <h2 class="text-center latest-products">Latest Products</h2>
 
         <div class="row">
-            <div class="col-md-3">
-                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
-            </div>
-            <div class="col-md-3">
-                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
-            </div>
-            <div class="col-md-3">
-                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
-            </div>
-            <div class="col-md-3">
-                <Product :image="'http://127.0.0.1:8000/uploads/images/1662718859.png'" name="test" price="300" description="test" />
+            <div class="col-md-3" v-for="product in products" :key="product.id">
+                <Product :src="'http://127.0.0.1:8000/' + product.image" :name="product.name" :price="product.price" :description="product.description" />
             </div>
         </div>
 
@@ -60,13 +51,25 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Product from '@/components/Product.vue'
+import store from '@/store'
 
 export default {
     name: 'HomeView',
     components: {
         NavBar,
         Product
-    }
+    },
+    mounted() {
+        store.dispatch('getLatestProducts')
+    },
+    computed: {
+        products() {
+            return store.getters.latestProducts
+        },
+        loading() {
+            return store.getters.loading
+        }
+    },
 }
 </script>
 
