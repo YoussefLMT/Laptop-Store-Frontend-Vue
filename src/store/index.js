@@ -52,6 +52,7 @@ export default createStore({
         })
         .catch(error => console.log(error))
     },
+    
 
     getLatestProducts({ commit }) {
       commit('setLoading', true)

@@ -38,9 +38,16 @@
 
         <h2 class="text-center latest-products">Latest Products</h2>
 
-        <div class="row">
+        <div v-if="loading" class="text-center mb-5">
+            <h3>Loading...</h3>
+        </div>
+
+        <div class="row" v-else>
             <div class="col-md-3" v-for="product in products" :key="product.id">
-                <Product :src="'http://127.0.0.1:8000/' + product.image" :name="product.name" :price="product.price" :description="product.description" />
+                <Product :image="'http://127.0.0.1:8000/' + product.image" 
+                         :name="product.name" :price="product.price" 
+                         :description="product.description" 
+                />
             </div>
         </div>
 
