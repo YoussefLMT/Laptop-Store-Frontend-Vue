@@ -24,7 +24,7 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" rows="3" v-model="product.description"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary">Update Product</button>
+                <button type="button" @click="updateProduct" class="btn btn-primary">Update Product</button>
             </form>
         </div>
     </div>
@@ -77,6 +77,20 @@ export default {
             }
         },
 
+        async updateProduct() {
+            try {
+                const response = await axiosInstance.put(`/update-product/${this.$route.params.id}`, this.product)
+                if (response.data.status === 200) {
+                    // this.message = response.data.message
+                    console.log(response.data.message)
+                } else if (response.data.status === 422) {
+                    // this.errors = response.data.validation_err
+                    console.log(response.data.validation_err)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 }
 </script>
