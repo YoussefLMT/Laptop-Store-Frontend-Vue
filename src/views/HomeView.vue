@@ -47,6 +47,7 @@
                 <Product :image="'http://127.0.0.1:8000/' + product.image" 
                          :name="product.name" :price="product.price" 
                          :description="product.description" 
+                         :stock="product.quantity"
                 />
             </div>
         </div>

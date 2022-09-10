@@ -8,6 +8,8 @@
                 <div class="d-flex justify-content-between">
                     <p class="card-text">{{ description }}</p>
                     <p class="card-text mr-4 text-success">{{ price }}$</p>
+                    <p class="card-text mr-4 text-success">In Stock:{{ stock }}</p>
+
                 </div>
                 <a href="/#" class="btn btn-primary">Show Product</a>
             </div>
@@ -18,7 +20,7 @@
 
 <script>
 export default {
-    props: ['image', 'name', 'description', 'price'],
+    props: ['image', 'name', 'description', 'price', 'stock'],
 }
 </script>
 
