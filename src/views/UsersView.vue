@@ -68,7 +68,7 @@
                         <div class="mb-3">
                             <label for="passowrd" class="form-label">Password</label>
                             <input type="passowrd" class="form-control" id="passowrd" v-model="user.password">
-                            <span class="text-danger" v-if="errors.role">{{ errors.role[0] }}</span>
+                            <span class="text-danger" v-if="errors.passowrd">{{ errors.passowrd[0] }}</span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Role</label>

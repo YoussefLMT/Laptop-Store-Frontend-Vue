@@ -21,7 +21,6 @@
                 <div class="mb-3">
                     <label for="passowrd" class="form-label">New Password</label>
                     <input type="passowrd" class="form-control" id="passowrd" v-model="user.password">
-                    <span class="text-danger" v-if="errors.role">{{ errors.role[0] }}</span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Role</label>
@@ -85,6 +84,34 @@ export default {
             }
         },
 
+        async updateUser() {
+            try {
+                const response = await axiosInstance.put(`/update-user/${this.$route.params.id}`, this.user)
+                if (response.data.status === 200) {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
+                } else if (response.data.status === 422) {
+                    this.errors = response.data.validation_err
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 }
 </script>
