@@ -52,6 +52,24 @@
             </div>
         </div>
 
+
+        <h2 class="text-center our-products">Our Products</h2>
+
+        <div v-if="loading" class="text-center mb-5">
+            <h3>Loading...</h3>
+        </div>
+
+        <div class="row" v-else>
+            <div class="col-md-3" v-for="product in products" :key="product.id">
+                <Product :image="'http://127.0.0.1:8000/' + product.image" 
+                         :name="product.name" :price="product.price" 
+                         :description="product.description" 
+                         :stock="product.quantity"
+                />
+            </div>
+        </div>
+        
+
     </div>
 </div>
 </template>
@@ -143,6 +161,11 @@ p {
 }
 
 .latest-products {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.our-products {
     margin-top: 100px;
     margin-bottom: 100px;
 }
