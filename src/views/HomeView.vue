@@ -44,14 +44,9 @@
 
         <div class="row" v-else>
             <div class="col-md-3" v-for="product in latestProducts" :key="product.id">
-                <Product :image="'http://127.0.0.1:8000/' + product.image" 
-                         :name="product.name" :price="product.price" 
-                         :description="product.description" 
-                         :stock="product.quantity"
-                />
+                <Product :image="'http://127.0.0.1:8000/' + product.image" :name="product.name" :price="product.price" :description="product.description" :stock="product.quantity" />
             </div>
         </div>
-
 
         <h2 class="text-center our-products">Our Products</h2>
 
@@ -61,14 +56,12 @@
 
         <div class="row" v-else>
             <div class="col-md-3 mb-5" v-for="product in homeProducts" :key="product.id">
-                <Product :image="'http://127.0.0.1:8000/' + product.image" 
-                         :name="product.name" :price="product.price" 
-                         :description="product.description" 
-                         :stock="product.quantity"
-                />
+                <Product :image="'http://127.0.0.1:8000/' + product.image" :name="product.name" :price="product.price" :description="product.description" :stock="product.quantity" />
+            </div>
+            <div class="btn-show">
+                <button class="btn btn-warning text-center">Show All Products</button>
             </div>
         </div>
-        
 
     </div>
 </div>
@@ -171,5 +164,15 @@ p {
 .our-products {
     margin-top: 100px;
     margin-bottom: 100px;
+}
+
+.btn-show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-show button{
+    font-weight: bold;
 }
 </style>
