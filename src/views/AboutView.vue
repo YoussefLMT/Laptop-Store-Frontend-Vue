@@ -1,11 +1,10 @@
 <template>
 <NavBar />
 
-<section class="about">
-    <div class="container">
+    <div class="container about">
         <div class="row">
             <div class="col-md-6">
-                <div class="">
+                <div class="about-content">
                     <h1>Who we are?</h1>
                     <br>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -17,19 +16,18 @@
                         eos cupiditate? Eligendi voluptates fugiat numquam quo eveniet
                         nesciunt quam! Expedita, quo fugiat.
                     </p>
-                    <a href="#" class="btn2">Read More</a>
+                    <router-link to="/about" class="btn2">Read More</router-link>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="about-col animate__animated animate__backInRight">
-                    <img src="@/assets/laptop.png">
+                <div>
+                    <img src="@/assets/buy-online.png">
                 </div>
             </div>
 
         </div>
     </div>
 
-</section>
 <Footer />
 </template>
 
@@ -46,8 +44,16 @@ export default {
 </script>
 
 <style scoped>
+.about{
+  margin-top: 100px;
+}
+
+.about-content{
+  margin-left: 60px;
+}
 img {
-    width: 100%;
+    width: 400px;
+    margin-left: 110px;
     transition: .8s;
 }
 
