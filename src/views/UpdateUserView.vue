@@ -2,7 +2,7 @@
 <SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse" />
 <main>
     <h3>Update User</h3>
-    <div class="card pro" style="width: 800px;">
+    <div class="card users" style="width: 800px;">
         <div class="card-header">
             Users Managment
         </div>
@@ -83,7 +83,7 @@ main {
     transition: .3s ease-out;
 }
 
-.pro {
+.users {
     margin: 20px auto;
 }
 

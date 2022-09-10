@@ -34,7 +34,7 @@
                         <td>{{ user.role}}</td>
                         <td>
                             <button type="button" @click="deleteUser(user.id)" class="btn btn-danger">Delete</button>
-                            <!-- <router-link :to="{ name: 'updateUser', params: {id: user.id }}" class="btn btn-warning">Update</router-link> -->
+                            <router-link :to="{ name: 'updateUser', params: {id: user.id }}" class="btn btn-warning">Update</router-link>
                         </td>
                     </tr>
                 </tbody>
