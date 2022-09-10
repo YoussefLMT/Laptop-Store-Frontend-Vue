@@ -78,7 +78,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" @click="addNewProduct" class="btn btn-primary">Save changes</button>
+                    <button type="button" @click="addNewUser" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -94,6 +94,7 @@ import {
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import store from '@/store'
+import axiosInstance from '../axios'
 
 export default {
     components: {
@@ -130,6 +131,27 @@ export default {
                 this.collapsed = true
             } else {
                 this.collapsed = false
+            }
+        },
+
+         async addNewUser() {
+            try {
+                const response = await axiosInstance.post("/add-user", this.user)
+
+                if (response.data.status === 200) {
+                    this.message = response.data.message
+                    store.dispatch('getUsers')
+                } else {
+                    this.errors = response.data.validation_err
+                }
+
+                this.user.name = ''
+                this.user.email = ''
+                this.user.password = ''
+                this.user.role = ''
+
+            } catch (error) {
+                console.log(error)
             }
         },
     }
