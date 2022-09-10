@@ -93,6 +93,25 @@ const routes = [
       }
     }
   },
+  {
+    path: '/users',
+    name: 'users',
+    component: () => import('../views/UsersView.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.token) {
+        if (store.state.user.role !== "admin") {
+          next({ name: 'notFound' });
+        } else {
+          next()
+        }
+      } else {
+        next({ name: 'login' })
+      }
+    }
+  },
 ]
 
 
