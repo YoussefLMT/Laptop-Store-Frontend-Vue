@@ -9,6 +9,7 @@ export default createStore({
     },
     products: [],
     latest_products: [],
+    home_products: [],
     loading: false
   },
   getters: {
@@ -18,6 +19,10 @@ export default createStore({
 
     latestProducts(state) {
       return state.latest_products
+    },
+
+    homeProducts(state) {
+      return state.home_products
     },
 
     loading(state) {
@@ -39,6 +44,10 @@ export default createStore({
 
     getLatestProducts(state, latest_products) {
       state.latest_products = latest_products
+    },
+
+    getHomeProducts(state, home_products) {
+      state.home_products = home_products
     }
   },
   actions: {
@@ -60,6 +69,7 @@ export default createStore({
       axiosInstance.get('/specific-products')
         .then(response => {
           commit('getLatestProducts', response.data.latest_products)
+          commit('getHomeProducts', response.data.home_products)
           commit('setLoading', false)
         })
         .catch(error => console.log(error))
