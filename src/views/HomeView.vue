@@ -60,7 +60,7 @@
         </div>
 
         <div class="row" v-else>
-            <div class="col-md-3" v-for="product in products" :key="product.id">
+            <div class="col-md-3 mb-5" v-for="product in homeProducts" :key="product.id">
                 <Product :image="'http://127.0.0.1:8000/' + product.image" 
                          :name="product.name" :price="product.price" 
                          :description="product.description" 
