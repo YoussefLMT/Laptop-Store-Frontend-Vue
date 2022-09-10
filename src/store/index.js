@@ -10,6 +10,7 @@ export default createStore({
     products: [],
     latest_products: [],
     home_products: [],
+    users: [],
     loading: false
   },
   getters: {
@@ -23,6 +24,10 @@ export default createStore({
 
     homeProducts(state) {
       return state.home_products
+    },
+
+    users(state) {
+      return state.users
     },
 
     loading(state) {
@@ -48,6 +53,10 @@ export default createStore({
 
     getHomeProducts(state, home_products) {
       state.home_products = home_products
+    },
+
+    getUsers(state, users) {
+      state.users = users
     }
   },
   actions: {
@@ -70,6 +79,17 @@ export default createStore({
         .then(response => {
           commit('getLatestProducts', response.data.latest_products)
           commit('getHomeProducts', response.data.home_products)
+          commit('setLoading', false)
+        })
+        .catch(error => console.log(error))
+    },
+
+    getUsers({ commit }) {
+      commit('setLoading', true)
+
+      axiosInstance.get('/users')
+        .then(response => {
+          commit('getUsers', response.data.users)
           commit('setLoading', false)
         })
         .catch(error => console.log(error))
