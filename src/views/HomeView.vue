@@ -64,11 +64,13 @@
         </div>
 
     </div>
+    <Footer />
 </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import Footer from '@/components/Footer.vue'
 import Product from '@/components/Product.vue'
 import store from '@/store'
 
@@ -76,7 +78,8 @@ export default {
     name: 'HomeView',
     components: {
         NavBar,
-        Product
+        Product,
+        Footer
     },
     mounted() {
         store.dispatch('getSpecificProducts')
@@ -166,13 +169,13 @@ p {
     margin-bottom: 100px;
 }
 
-.btn-show{
+.btn-show {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.btn-show button{
+.btn-show button {
     font-weight: bold;
 }
 </style>

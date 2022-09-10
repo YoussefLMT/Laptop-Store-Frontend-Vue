@@ -15,24 +15,26 @@
             </div>
         </div>
     </div>
-
+    <Footer />
 </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Product from '@/components/Product.vue'
+import Footer from '@/components/Footer.vue'
 import store from '@/store'
 
 export default {
     components: {
         NavBar,
-        Product
+        Product,
+        Footer
     },
     mounted() {
         store.dispatch('getProducts')
     },
-     computed: {
+    computed: {
         products() {
             return store.getters.products
         },
