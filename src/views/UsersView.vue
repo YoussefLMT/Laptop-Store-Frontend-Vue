@@ -3,7 +3,7 @@
 
 <main :class="{ 'mll': collapsed }">
     <h1>Users</h1>
-      <div class="card users" style="width: 900px;">
+    <div class="card users" style="width: 900px;">
         <div class="card-header">
             Users Managment
 
@@ -19,12 +19,15 @@
                         <th scope="col">actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr >
-                        <th scope="row">77</th>
-                        <td>yy</td>
-                        <td>uu</td>
-                        <td>yy</td>
+                <div v-if="loading" class="spinner">
+                    <h3>Loading...</h3>
+                </div>
+                <tbody v-else v-for="user in users" :key="user.id">
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email}}</td>
+                        <td>{{ user.role}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -40,6 +43,7 @@ import {
     SidebarMenu
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+import store from '@/store'
 
 export default {
     components: {
@@ -50,6 +54,17 @@ export default {
             menu,
             collapsed: false,
 
+        }
+    },
+    mounted() {
+        store.dispatch('getUsers')
+    },
+    computed: {
+        users() {
+            return store.getters.users
+        },
+        loading() {
+            return store.getters.loading
         }
     },
     methods: {
@@ -70,7 +85,7 @@ main {
     padding: 20px;
 }
 
-.users{
+.users {
     margin: 50px auto;
 }
 
