@@ -13,6 +13,11 @@ const menu = [
         title: 'Products',
         icon: 'fa-solid fa-shop'
     },
+    {
+        href: '/users',
+        title: 'Users',
+        icon: 'fa-solid fa-users'
+    },
 ]
 
 export default menu;

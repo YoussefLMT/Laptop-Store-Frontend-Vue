@@ -1,10 +1,10 @@
 <template>
 <SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse" />
 
-    <main :class="{ 'mll': collapsed }">
-        <h1>Users</h1>
+<main :class="{ 'mll': collapsed }">
+    <h1>Users</h1>
 
-    </main>
+</main>
 </template>
 
 <script>
@@ -18,14 +18,32 @@ export default {
     components: {
         SidebarMenu
     },
-    data(){
-        return{
-            menu
+    data() {
+        return {
+            menu,
+            collapsed: false,
+
         }
+    },
+    methods: {
+        onToggleCollapse(collapsed) {
+            if (collapsed) {
+                this.collapsed = true
+            } else {
+                this.collapsed = false
+            }
+        },
     }
 }
 </script>
 
 <style scoped>
+main {
+    margin-left: 300px;
+    padding: 20px;
+}
 
+.mll {
+    margin-left: 70px;
+}
 </style>
