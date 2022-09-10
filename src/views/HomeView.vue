@@ -43,7 +43,7 @@
         </div>
 
         <div class="row" v-else>
-            <div class="col-md-3" v-for="product in products" :key="product.id">
+            <div class="col-md-3" v-for="product in latestProducts" :key="product.id">
                 <Product :image="'http://127.0.0.1:8000/' + product.image" 
                          :name="product.name" :price="product.price" 
                          :description="product.description" 
@@ -86,11 +86,14 @@ export default {
         Product
     },
     mounted() {
-        store.dispatch('getLatestProducts')
+        store.dispatch('getSpecificProducts')
     },
     computed: {
-        products() {
+        latestProducts() {
             return store.getters.latestProducts
+        },
+        homeProducts() {
+            return store.getters.homeProducts
         },
         loading() {
             return store.getters.loading

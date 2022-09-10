@@ -63,7 +63,7 @@ export default createStore({
     },
     
 
-    getLatestProducts({ commit }) {
+    getSpecificProducts({ commit }) {
       commit('setLoading', true)
 
       axiosInstance.get('/specific-products')
