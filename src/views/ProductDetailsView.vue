@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-6">
-            <img class="details-img" src="@/assets/laptop/png">
+            <img class="details-img" src="@/assets/laptop.png">
         </div>
         <div class="col-sm-6">
             <a href="/">Go Back</a><br><br>

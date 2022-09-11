@@ -11,7 +11,7 @@
                     <p class="card-text mr-4 text-success">In Stock:{{ stock }}</p>
 
                 </div>
-                <router-link :to="{ name: 'productDetails', params: {id: product.id }}" class="btn btn-primary">Show Product</router-link>
+                <router-link :to="{ name: 'productDetails', params: {id: id }}" class="btn btn-primary">Show Product</router-link>
             </div>
         </div>
     <!-- </div> -->
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    props: ['image', 'name', 'description', 'price', 'stock'],
+    props: ['image', 'name', 'description', 'price', 'stock', 'id'],
 }
 </script>
 
