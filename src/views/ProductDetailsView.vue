@@ -47,9 +47,8 @@ export default {
     },
     methods: {
         async addTocart() {
-            const response = await axiosInstance.post(`add-to-cart/${this.$route.params.id}`)
-
-            if (response.data.status === 406) {
+            if (!localStorage.getItem('token')) {
+                this.$router.push('/login')
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -65,28 +64,52 @@ export default {
 
                 Toast.fire({
                     icon: 'error',
-                    title: response.data.message
+                    title: 'Please login first'
                 })
 
-            } else if (response.data.status === 200) {
+            } else {
+                const response = await axiosInstance.post(`add-to-cart/${this.$route.params.id}`)
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+                if (response.data.status === 406) {
 
-                Toast.fire({
-                    icon: 'success',
-                    title: response.data.message
-                })
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: response.data.message
+                    })
+
+                } else if (response.data.status === 200) {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
+                }
             }
+
         }
     }
 }
