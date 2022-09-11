@@ -37,7 +37,7 @@
 
                     <div v-else class="d-flex">
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/#">Cart (0)</router-link>
+                            <router-link class="nav-link" to="/#">Cart ({{cart_count}})</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/#">My Orders</router-link>
@@ -62,6 +62,14 @@ import axiosInstance from '../axios'
 import Swal from 'sweetalert2'
 
 export default {
+    data(){
+        return{
+            cart_count: ''
+        }
+    },
+    mounted(){
+        this.getCartCount()
+    },
     methods: {
         async logOut() {
             try {
@@ -81,6 +89,11 @@ export default {
 
                 }
             } catch (error) {}
+        },
+
+        async getCartCount(){
+            const response = await axiosInstance.get('/cart-count')
+            this.cart_count = response.data.cart_count
         }
     }
 }
