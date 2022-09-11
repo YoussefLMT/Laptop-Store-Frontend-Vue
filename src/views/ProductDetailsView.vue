@@ -15,8 +15,6 @@
             <p>Price: {{ product.price }}$</p>
             <p>Description: {{ product.description }}</p><br>
             <button class="btn btn-primary">Add Product To Cart</button>
-            <br><br>
-            <button class="btn btn-primary">Buy Product</button><br><br>
         </div>
     </div>
 </div>
