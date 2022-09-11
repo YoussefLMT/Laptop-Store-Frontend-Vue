@@ -31,7 +31,7 @@ export default createStore({
       return state.users
     },
 
-    getProduct(state) {
+    product(state) {
       return state.product
     },
 
@@ -104,12 +104,12 @@ export default createStore({
         .catch(error => console.log(error))
     },
 
-    getProduct({ commit },  { id }) {
+    getProduct({ commit }, id) {
       commit('setLoading', true)
 
       axiosInstance.get(`/get-product/${id}`)
         .then(response => {
-          commit('getProduc', response.data.product)
+          commit('getProduct', response.data.product)
           commit('setLoading', false)
         })
         .catch(error => console.log(error))
