@@ -1,9 +1,11 @@
 <template>
 <NavBar />
 
-
 <div class="container mt-5">
-    <div class="row">
+    <div v-if="loading" class="text-center mb-5">
+        <h3>Loading...</h3>
+    </div>
+    <div v-else class="row">
         <div class="col-md-6">
             <img class="details-img" :src="'http://127.0.0.1:8000/' + product.image">
         </div>
@@ -12,7 +14,7 @@
             <h5>{{ product.name }}</h5>
             <p>Price: {{ product.price }}$</p>
             <p>Description: {{ product.description }}</p><br>
-                <button class="btn btn-primary">Add Product To Cart</button>
+            <button class="btn btn-primary">Add Product To Cart</button>
             <br><br>
             <button class="btn btn-primary">Buy Product</button><br><br>
         </div>
@@ -20,7 +22,6 @@
 </div>
 
 <Footer />
-
 </template>
 
 <script>
@@ -48,7 +49,7 @@ export default {
 </script>
 
 <style scoped>
-.details-img{
+.details-img {
     height: 300px;
 }
 </style>
