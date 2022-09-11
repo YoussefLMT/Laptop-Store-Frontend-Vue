@@ -11,7 +11,7 @@
                     <p class="card-text mr-4 text-success">In Stock:{{ stock }}</p>
 
                 </div>
-                <a href="/#" class="btn btn-primary">Show Product</a>
+                <router-link :to="{ name: 'productDetails', params: {id: product.id }}" class="btn btn-primary">Show Product</router-link>
             </div>
         </div>
     <!-- </div> -->
