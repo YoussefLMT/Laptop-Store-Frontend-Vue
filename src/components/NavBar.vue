@@ -37,7 +37,7 @@
 
                     <div v-else class="d-flex">
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/#">Cart ({{cart_count}})</router-link>
+                            <router-link class="nav-link" to="/cart">Cart ({{cart_count}})</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/#">My Orders</router-link>
