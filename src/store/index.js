@@ -36,7 +36,7 @@ export default createStore({
       return state.product
     },
 
-    cartProduct(state) {
+    cartProducts(state) {
       return state.cart_products
     },
 
