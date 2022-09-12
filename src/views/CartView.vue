@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.price }}DH</p>
-                        <button class="btn btn-warning">Remove From Cart</button>
+                        <button @click="removeProduct(product.cart_id)" class="btn btn-warning">Remove From Cart</button>
                     </div>
                 </div>
             </div>
@@ -33,6 +33,8 @@
 import NavBar from '@/components/NavBar.vue'
 import Footer from '@/components/Footer.vue'
 import store from '@/store'
+import axiosInstance from '@/axios'
+import Swal from 'sweetalert2'
 
 export default {
     components: {
@@ -50,6 +52,41 @@ export default {
             return store.getters.loading
         }
     },
+    methods: {
+        async removeProduct(id) {
+            const response = await axiosInstance.delete(`/remove-product/${id}`)
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            if (response.data.status === 200) {
+
+                Toast.fire({
+                    icon: 'success',
+                    title: response.data.message
+                })
+
+                store.dispatch('getCartProducts')
+
+            } else if (response.data.status === 404) {
+
+                Toast.fire({
+                    icon: 'error',
+                    title: response.data.message
+                })
+
+                store.dispatch('getCartProducts')
+            }
+        }
+    }
 }
 </script>
 
