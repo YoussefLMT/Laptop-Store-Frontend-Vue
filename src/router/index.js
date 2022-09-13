@@ -49,7 +49,15 @@ const routes = [
   {
     path: '/order',
     name: 'order',
-    component: () => import('../views/OrderView.vue')
+    component: () => import('../views/OrderView.vue'),
+    meta: {
+      requiresAuth: true
+    },
+  },
+  {
+    path: '/my-orders',
+    name: 'myOrders',
+    component: () => import('../views/MyOrdersView.vue')
   },
   {
     path: '/404',
