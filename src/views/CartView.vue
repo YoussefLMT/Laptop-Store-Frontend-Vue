@@ -2,7 +2,7 @@
 <NavBar />
 
 <div class="container mt-5">
-    <h3>Walcome in your cart</h3>
+    <h3 class="text-center">Walcome in your cart</h3>
 
     <div v-if="loading" class="text-center mb-5">
         <h3>Loading...</h3>
