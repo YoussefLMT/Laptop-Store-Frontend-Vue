@@ -40,7 +40,7 @@
                             <router-link class="nav-link" to="/cart">Cart ({{cart_count}})</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/#">My Orders</router-link>
+                            <router-link class="nav-link" to="/my-orders">My Orders</router-link>
                         </li>
                         <li class="nav-item">
                             <button type="button" @click="logOut" class="btn btn-danger">Log Out</button>

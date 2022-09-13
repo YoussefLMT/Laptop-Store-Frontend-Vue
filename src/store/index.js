@@ -13,6 +13,7 @@ export default createStore({
     product: [],
     users: [],
     cart_products: [],
+    orders: [],
     loading: false
   },
   getters: {
@@ -38,6 +39,10 @@ export default createStore({
 
     cartProducts(state) {
       return state.cart_products
+    },
+
+    orders(state) {
+      return state.orders
     },
 
     loading(state) {
@@ -76,6 +81,10 @@ export default createStore({
     getCartProducts(state, cart_products) {
       state.cart_products = cart_products
     },
+
+    getOrders(state, orders) {
+      state.orders = orders
+    }
   },
   actions: {
     getProducts({ commit }) {
@@ -134,6 +143,17 @@ export default createStore({
         })
         .catch(error => console.log(error))
     },
+
+    getOrders({ commit }) {
+      commit('setLoading', true)
+
+      axiosInstance.get('/get-orders')
+        .then(response => {
+          commit('getOrders', response.data.orders)
+          commit('setLoading', false)
+        })
+        .catch(error => console.log(error))
+    }
   },
   modules: {
 
