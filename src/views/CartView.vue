@@ -18,10 +18,9 @@
                 </div>
             </div>
         </div>
-
+            <router-link to="/order" class="btn btn-primary">Order Now</router-link><br><br>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4" v-for="product in cartProducts" :key="product.id">
-                <a href="/#" class="btn btn-primary">Order Now</a><br><br>
 
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" :src="'http://127.0.0.1:8000/' + product.image">
