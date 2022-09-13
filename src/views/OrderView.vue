@@ -6,7 +6,7 @@
         <tbody>
             <tr>
                 <th scope="col">Amount</th>
-                <td>66666DH</td>
+                <td>{{ amount }}DH</td>
             </tr>
             <tr>
                 <th scope="col">Shipment</th>
@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <th scope="col">Total Amount</th>
-                <td>66666DH</td>
+                <td>{{ amount+50 }}DH</td>
             </tr>
         </tbody>
     </table>
@@ -40,12 +40,27 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Footer from '@/components/Footer.vue'
+import axiosInstance from '@/axios'
 
 export default {
     components: {
         NavBar,
         Footer
     },
+    data(){
+        return{
+            amount:''
+        }
+    },
+    mounted(){
+        this.getOrderTotalPrice()
+    },
+    methods:{
+        async getOrderTotalPrice(){
+            const response = await axiosInstance.get('/total-price')
+            this.amount = response.data.total_price
+        }
+    }
 }
 </script>
 
