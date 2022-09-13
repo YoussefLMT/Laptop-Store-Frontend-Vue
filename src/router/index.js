@@ -47,6 +47,11 @@ const routes = [
     component: () => import('../views/CartView.vue')
   },
   {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/OrderView.vue')
+  },
+  {
     path: '/404',
     name: 'notFound',
     component: () => import('../views/NotFoundView.vue')
