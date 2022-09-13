@@ -8,7 +8,7 @@
     </div>
     <div class="row" v-else v-for="order in orders" :key="order.id">
         <div class="col-sm-3">
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-3" style="width: 18rem;">
                 <img class="card-img-top" :src="'http://127.0.0.1:8000/' + order.image">
                 <div class="card-body">
                     <h5 class="card-title">{{ order.name }}</h5>
@@ -19,7 +19,7 @@
         <div class="col-sm-4 ml-5">
             <p>Address: {{ order.address }}</p>
             <p>City: {{ order.city }}</p>
-            <p>Status: {{ order.status }}</p>
+            <p class="badge text-bg-warning">Status: {{ order.status }}</p>
         </div>
     </div>
 </div>
@@ -52,5 +52,12 @@ export default {
 </script>
 
 <style scoped>
+p {
+    font-size: 15px;
+    font-weight: bold;
+}
 
+.card {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 </style>
