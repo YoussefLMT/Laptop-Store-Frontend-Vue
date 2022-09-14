@@ -4,7 +4,7 @@
         <div class="row align-items-stretch">
             <div class="c-dashboardInfo col-lg-3 col-md-6">
                 <div class="wrap">
-                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Portfolio Balance</h4><span class="hind-font caption-12 c-dashboardInfo__count">€10,500</span>
+                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><i :class="icon"></i>{{ title }}</h4><span class="hind-font caption-12 c-dashboardInfo__count">{{ count }}</span>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-
+    props: ['title', 'count', ,'icon'],
 }
 </script>
 
@@ -37,7 +37,7 @@ export default {
 .c-dashboardInfo__title,
 .c-dashboardInfo__subInfo {
     color: #6c6c6c;
-    font-size: 1.18em;
+    font-size: 2em;
 }
 
 .c-dashboardInfo span {
@@ -79,5 +79,11 @@ export default {
     transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     user-select: none;
     flex-shrink: 0;
+}
+
+i{
+    font-size: 50px;
+    color: black;
+    margin-right: 20px;
 }
 </style>
