@@ -50,11 +50,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="card" style="width: 18rem;">
-                        <img src="@/assets/laptop.png" class="card-img-top">
+                    <div class="card mb-3" style="width: 18rem;" v-for="orderProduct in order_products" :key="orderProduct.id">
+                        <img :src="'http://127.0.0.1:8000/' + orderProduct.image" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">{{ orderProduct.name}}</h5>
+                            <p class="card-text">{{ orderProduct.price }}$</p>
                         </div>
                     </div>
                 </div>
