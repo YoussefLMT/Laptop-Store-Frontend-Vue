@@ -18,6 +18,11 @@ const menu = [
         title: 'Users',
         icon: 'fa-solid fa-users'
     },
+    {
+        href: '/orders',
+        title: 'Orders',
+        icon: 'fa-brands fa-shopify'
+    },
 ]
 
 export default menu;
