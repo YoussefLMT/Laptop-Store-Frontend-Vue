@@ -3,7 +3,7 @@
 
 <main :class="{ 'mll': collapsed }">
     <h1>Orders</h1>
-    <div class="card orders" style="width: 1200px;">
+    <div class="card orders" style="width: 1000px;">
         <div class="card-header">
             Orders Managment
 
@@ -21,7 +21,7 @@
                         <th scope="col">actions</th>
                     </tr>
                 </thead>
-                 <div v-if="loading" class="spinner">
+                <div v-if="loading" class="spinner">
                     <h3>Loading...</h3>
                 </div>
                 <tbody v-else>
@@ -31,7 +31,10 @@
                         <td>{{ order.address }}</td>
                         <td>{{ order.city }}</td>
                         <td>{{ order.total_amount}}</td>
-                        <td>{{ order.status }}</td>
+                        <td class="badge text-bg-warning mt-2">{{ order.status }}</td>
+                        <td>
+                            <button type="button" @click="getOrderProducts(product.id)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#getOrderProducts">Products</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
