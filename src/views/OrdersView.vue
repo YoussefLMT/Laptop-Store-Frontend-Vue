@@ -33,7 +33,7 @@
                         <td>{{ order.total_amount}}</td>
                         <td class="badge text-bg-warning mt-2">{{ order.status }}</td>
                         <td>
-                            <button type="button" @click="getOrderProducts(product.id)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#getOrderProducts">Products</button>
+                            <button type="button" @click="getOrderProducts(order.id)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#getOrderProducts">Products</button>
                         </td>
                     </tr>
                 </tbody>
@@ -74,6 +74,7 @@ import {
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import store from '@/store'
+import axiosInstance from '@/axios'
 
 export default {
     components: {
@@ -83,6 +84,7 @@ export default {
         return {
             menu,
             collapsed: false,
+            order_products: []
         }
     },
     mounted() {
@@ -104,6 +106,11 @@ export default {
                 this.collapsed = false
             }
         },
+
+        async getOrderProducts(id){
+            const response = await axiosInstance.get(`get-order-products/${id}`)
+            this.order_products = response.data.order_products
+        }
     }
 }
 </script>
