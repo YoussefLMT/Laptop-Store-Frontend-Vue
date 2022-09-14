@@ -42,7 +42,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <router-link class="small" to="/">Have an account? Go to login</router-link>
+                    <router-link class="small" to="/login">Have an account? Go to login</router-link>
                 </div>
             </div>
         </div>

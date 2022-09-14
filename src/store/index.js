@@ -147,7 +147,7 @@ export default createStore({
     getOrders({ commit }) {
       commit('setLoading', true)
 
-      axiosInstance.get('/get-orders')
+      axiosInstance.get('/get-user-orders')
         .then(response => {
           commit('getOrders', response.data.orders)
           commit('setLoading', false)
