@@ -47,7 +47,7 @@ export default createStore({
     },
 
     allOrders(state) {
-      return state.orders
+      return state.all_orders
     },
 
     loading(state) {

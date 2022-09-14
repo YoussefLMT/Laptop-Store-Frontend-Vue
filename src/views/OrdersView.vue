@@ -21,14 +21,17 @@
                         <th scope="col">actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">tt</th>
-                        <td>tt</td>
-                        <td>tt</td>
-                        <td>tt</td>
-                        <td>tt</td>
-                        <td>tt</td>
+                 <div v-if="loading" class="spinner">
+                    <h3>Loading...</h3>
+                </div>
+                <tbody v-else>
+                    <tr v-for="order in allOrders" :key="order.id">
+                        <th scope="row">{{ order.id }}</th>
+                        <td>{{ order.user_id}}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.total_amount}}</td>
+                        <td>{{ order.status }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -44,6 +47,7 @@ import {
     SidebarMenu
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+import store from '@/store'
 
 export default {
     components: {
@@ -53,6 +57,17 @@ export default {
         return {
             menu,
             collapsed: false,
+        }
+    },
+    mounted() {
+        store.dispatch('getAllOrders')
+    },
+    computed: {
+        allOrders() {
+            return store.getters.allOrders
+        },
+        loading() {
+            return store.getters.loading
         }
     },
     methods: {
