@@ -10,6 +10,7 @@
 import menu from '../components/menu'
 import { SidebarMenu } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+import axiosInstance from '@/axios'
 
 export default {
     components:{
@@ -18,6 +19,15 @@ export default {
     data(){
         return{
             menu
+        }
+    },
+    mounted(){
+        this.getTotalCount()
+    },
+    methods:{
+        async getTotalCount(){
+            const response = await axiosInstance.get('statistics')
+            console.log(response.data)
         }
     }
 }
