@@ -159,6 +159,25 @@ const routes = [
       }
     }
   },
+  {
+    path: '/orders',
+    name: 'orders',
+    component: () => import('../views/OrdersView.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.token) {
+        if (store.state.user.role !== "admin") {
+          next({ name: 'notFound' });
+        } else {
+          next()
+        }
+      } else {
+        next({ name: 'login' })
+      }
+    }
+  },
 ]
 
 
