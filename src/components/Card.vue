@@ -1,11 +1,9 @@
 <template>
 <div id="root">
     <div class="container mt-4">
-        <div class="row align-items-stretch">
-            <div class="c-dashboardInfo col-lg-3 col-md-6">
-                <div class="wrap">
-                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><i :class="icon"></i>{{ title }}</h4><span class="hind-font caption-12 c-dashboardInfo__count">{{ count }}</span>
-                </div>
+        <div class="c-dashboardInfo">
+            <div class="wrap">
+                <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><i :class="icon"></i>{{ title }}</h4><span class="hind-font caption-12 c-dashboardInfo__count">{{ count }}</span>
             </div>
         </div>
     </div>
@@ -14,7 +12,7 @@
 
 <script>
 export default {
-    props: ['title', 'count', ,'icon'],
+    props: ['title', 'count', 'icon'],
 }
 </script>
 
@@ -30,7 +28,7 @@ export default {
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding: 40px 25px 20px;
+    padding: 10px 25px 20px;
     height: 100%;
 }
 
@@ -81,7 +79,7 @@ export default {
     flex-shrink: 0;
 }
 
-i{
+i {
     font-size: 50px;
     color: black;
     margin-right: 20px;
