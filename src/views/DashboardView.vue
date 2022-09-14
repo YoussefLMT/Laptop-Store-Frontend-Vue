@@ -1,11 +1,8 @@
 <template>
-<SidebarMenu :menu="menu" />
+<SidebarMenu :menu="menu" @update:collapsed="onToggleCollapse"/>
 
-<main>
+<main :class="{ 'mll': collapsed }">
     <h1>Dashboard</h1>
-    <!-- <Card icon="fa-solid fa-shop" title="Products" :count="productsCount" />
-    <Card icon="fa-brands fa-shopify" title="Orders" :count="ordersCount" />
-    <Card icon="fa-solid fa-users" title="Users" :count="usersCount" /> -->
     <div class="row">
         <div class="col-md-3">
             <Card icon="fa-solid fa-shop" title="Products" :count="productsCount" />
@@ -41,6 +38,7 @@ export default {
     data() {
         return {
             menu,
+            collapsed: false,
             ordersCount: '',
             productsCount: '',
             usersCount: '',
@@ -58,7 +56,15 @@ export default {
             this.productsCount = response.data.productsCount
             this.usersCount = response.data.usersCount
             this.income = response.data.income
-        }
+        },
+
+        onToggleCollapse(collapsed) {
+            if (collapsed) {
+                this.collapsed = true
+            } else {
+                this.collapsed = false
+            }
+        },
     }
 }
 </script>
@@ -67,5 +73,9 @@ export default {
 main {
     margin-left: 300px;
     padding: 20px;
+}
+
+.mll {
+    margin-left: 70px;
 }
 </style>
