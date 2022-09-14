@@ -7,14 +7,17 @@
     <Card icon="fa-brands fa-shopify" title="Orders" :count="ordersCount" />
     <Card icon="fa-solid fa-users" title="Users" :count="usersCount" /> -->
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <Card icon="fa-solid fa-shop" title="Products" :count="productsCount" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <Card icon="fa-brands fa-shopify" title="Orders" :count="ordersCount" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <Card icon="fa-solid fa-users" title="Users" :count="usersCount" />
+        </div>
+        <div class="col-md-3">
+            <Card icon="fa-solid fa-users" title="Income" :count="income" />
         </div>
     </div>
 
@@ -40,7 +43,8 @@ export default {
             menu,
             ordersCount: '',
             productsCount: '',
-            usersCount: ''
+            usersCount: '',
+            income: ''
         }
     },
     mounted() {
@@ -53,6 +57,7 @@ export default {
             this.ordersCount = response.data.ordersCount
             this.productsCount = response.data.productsCount
             this.usersCount = response.data.usersCount
+            this.income = response.data.income
         }
     }
 }
