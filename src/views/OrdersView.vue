@@ -3,10 +3,9 @@
 
 <main :class="{ 'mll': collapsed }">
     <h1>Orders</h1>
-    <div class="card orders" style="width: 1000px;">
+    <div class="card mt-5 orders" style="width: 1000px;">
         <div class="card-header">
             Orders Managment
-
         </div>
         <div class="card-body">
             <table class="table">
