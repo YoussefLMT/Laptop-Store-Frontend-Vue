@@ -107,7 +107,7 @@ export default {
             }
         },
 
-        async getOrderProducts(id){
+        async getOrderProducts(id) {
             const response = await axiosInstance.get(`get-order-products/${id}`)
             this.order_products = response.data.order_products
         }
@@ -130,8 +130,12 @@ main {
     margin: 50px auto;
 }
 
-img{
+img {
     width: 150px;
+    margin: 0 auto;
+}
+
+.card {
     margin: 0 auto;
 }
 </style>
