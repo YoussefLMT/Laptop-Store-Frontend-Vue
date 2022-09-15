@@ -33,6 +33,7 @@
                         <td class="badge text-bg-warning mt-2">{{ order.status }}</td>
                         <td>
                             <button type="button" @click="getOrderProducts(order.id)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#getOrderProducts">Products</button>
+                            <router-link :to="{ name: 'updateProduct', params: {id: product.id }}" class="btn btn-warning">Update</router-link>
                         </td>
                     </tr>
                 </tbody>
@@ -109,7 +110,7 @@ export default {
         async getOrderProducts(id) {
             const response = await axiosInstance.get(`get-order-products/${id}`)
             this.order_products = response.data.order_products
-        }
+        },
     }
 }
 </script>
