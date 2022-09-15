@@ -3,22 +3,23 @@
 
 <main :class="{ 'mll': collapsed }">
     <h2>Update order status</h2>
-    <div class="card up-order" style="width: 1000px;">
+    <div class="card up-order" style="width: 600px;">
         <div class="card-header">
             Orders Managment
         </div>
         <div class="card-body">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mx-auto">
                         <form>
-                            <select class="form-select">
-                                <option disabled selected>Select Status</option>
-                                <option value="1">pending</option>
-                                <option value="2">in progress</option>
-                                <option value="3">shipping</option>
-                                <option value="3">shipped</option>
+                            <label class="mb-3">Select Status</label>
+                            <select class="form-select" v-model="status">
+                                <option value="pending">pending</option>
+                                <option value="in progress">in progress</option>
+                                <option value="shipping">shipping</option>
+                                <option value="shipped">shipped</option>
                             </select>
+                            <button type="button" @click="updateOrderStatus" class="btn btn-primary mt-3">Save changes</button>
                         </form>
                     </div>
                 </div>
@@ -34,6 +35,8 @@ import {
     SidebarMenu
 } from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+import axiosInstance from '@/axios'
+import Swal from 'sweetalert2'
 
 export default {
     components: {
@@ -42,7 +45,8 @@ export default {
     data() {
         return {
             menu,
-            collapsed: false
+            collapsed: false,
+            status: ''
         }
     },
     methods: {
@@ -53,6 +57,32 @@ export default {
                 this.collapsed = false
             }
         },
+
+        async updateOrderStatus() {
+            const response = await axiosInstance.put(`/update-order-status/${this.$route.params.id}`, {
+                status: this.status
+            })
+
+            if (response.data.status === 200) {
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: response.data.message
+                })
+            }
+        }
     }
 }
 </script>
