@@ -15,6 +15,7 @@ import {
     CategoryScale,
     LinearScale
 } from 'chart.js'
+import axiosInstance from '@/axios'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -54,7 +55,7 @@ export default {
         }
     },
     data() {
-        const data = [40, 20, 12, 40, 20, 12, 40, 20, 12, 40, 20, 12];
+        // const data = [40, 20, 12, 40, 20, 12, 40, 20, 12, 40, 20, 12];
 
         return {
             chartData: {
@@ -62,12 +63,22 @@ export default {
                 datasets: [{
                     label: 'Orders Per Month',
                     backgroundColor: '#1851A8',
-                    data: data
+                    data: []
                 }]
             },
             chartOptions: {
                 responsive: true
-            }
+            },
+        }
+    },
+    mounted(){
+        this.getOrdersStatistics()
+        console.log(this.chartData.datasets)
+    },
+    methods:{
+        async getOrdersStatistics(){
+            const response = await axiosInstance.get('/orders-statistics')
+            this.chartData.datasets[0].data = response.data.ordersCount.map((c) => c.count)
         }
     }
 }

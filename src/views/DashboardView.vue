@@ -14,7 +14,7 @@
             <Card icon="fa-solid fa-users" title="Users" :count="usersCount" />
         </div>
         <div class="col-md-3">
-            <Card icon="fa-solid fa-dollar-sign" title="Income" :count="income" />
+            <Card icon="fa-solid fa-dollar-sign" title="Income" :count="income + '$'" />
         </div>
     </div>
 
