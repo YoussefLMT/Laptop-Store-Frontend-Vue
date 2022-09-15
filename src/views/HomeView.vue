@@ -59,7 +59,7 @@
                 <Product :image="'http://127.0.0.1:8000/' + product.image" :name="product.name" :price="product.price" :description="product.description" :stock="product.quantity" :id="product.id"/>
             </div>
             <div class="btn-show">
-                <button class="btn btn-warning text-center">Show All Products</button>
+                <router-link to="/shop"><button class="btn btn-warning text-center">Show All Products</button></router-link>
             </div>
         </div>
 
