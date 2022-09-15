@@ -18,6 +18,13 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                  <BarChart />
+            </div>
+        </div>
+    </div>
 </main>
 </template>
 
@@ -29,11 +36,13 @@ import {
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import axiosInstance from '@/axios'
 import Card from '../components/Card'
+import BarChart from '../components/BarChart'
 
 export default {
     components: {
         SidebarMenu,
-        Card
+        Card,
+        BarChart
     },
     data() {
         return {
