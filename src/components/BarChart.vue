@@ -32,11 +32,11 @@ export default {
     },
     width: {
       type: Number,
-      default: 400
+      default: 220
     },
     height: {
       type: Number,
-      default: 200
+      default: 150
     },
     cssClasses: {
       default: '',
@@ -54,8 +54,12 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [ 'January', 'February', 'March' ],
-        datasets: [ { data: [40, 20, 12] } ]
+        labels: [ 'January', 'February', 'March' ,'April', 'May', 'June', 'July', 'August', 'September','October', 'November', 'December'],
+        datasets: [  {
+            label: 'Orders Per Month',
+            backgroundColor: '#1851A8',
+            data: [40, 20, 12, 40, 20, 12, 40, 20, 12, 40, 20, 12]
+          } ]
       },
       chartOptions: {
         responsive: true
