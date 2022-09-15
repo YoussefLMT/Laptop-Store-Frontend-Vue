@@ -178,6 +178,25 @@ const routes = [
       }
     }
   },
+  {
+    path: '/update-order-status/:id',
+    name: 'updateOrderStatus',
+    component: () => import('../views/UpdateOrderStatusView.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.token) {
+        if (store.state.user.role !== "admin") {
+          next({ name: 'notFound' });
+        } else {
+          next()
+        }
+      } else {
+        next({ name: 'login' })
+      }
+    }
+  }
 ]
 
 
