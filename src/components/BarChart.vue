@@ -55,8 +55,6 @@ export default {
         }
     },
     data() {
-        // const data = [40, 20, 12, 40, 20, 12, 40, 20, 12, 40, 20, 12];
-
         return {
             chartData: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -73,7 +71,6 @@ export default {
     },
     mounted(){
         this.getOrdersStatistics()
-        console.log(this.chartData.datasets)
     },
     methods:{
         async getOrdersStatistics(){
