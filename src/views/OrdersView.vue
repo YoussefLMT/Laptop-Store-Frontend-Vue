@@ -33,7 +33,7 @@
                         <td class="badge text-bg-warning mt-2">{{ order.status }}</td>
                         <td>
                             <button type="button" @click="getOrderProducts(order.id)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#getOrderProducts">Products</button>
-                            <router-link :to="{ name: 'updateProduct', params: {id: product.id }}" class="btn btn-warning">Update</router-link>
+                            <router-link :to="{ name: 'updateOrderStatus', params: {id: order.id }}" class="btn btn-primary">Update</router-link>
                         </td>
                     </tr>
                 </tbody>
