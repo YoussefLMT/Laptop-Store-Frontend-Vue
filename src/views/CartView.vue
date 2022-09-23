@@ -9,7 +9,7 @@
     </div>
 
     <div v-else>
-        <div v-if="cartProductsLenth === 0" class="empty-cart mt-5">
+        <div v-if="cartProductsLength === 0" class="empty-cart mt-5">
             <div class="row">
                 <div class="col-md-">
                     <img src="@/assets/empty_cart.png">
@@ -57,7 +57,7 @@ export default {
         cartProducts() {
             return store.getters.cartProducts
         },
-        cartProductsLenth() {
+        cartProductsLength() {
             return this.cartProducts.length
         },
         loading() {
