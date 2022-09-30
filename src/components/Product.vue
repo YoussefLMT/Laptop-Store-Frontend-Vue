@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ name }}</h5>
                 <div class="d-flex justify-content-between">
-                    <p class="card-text">{{ description }}</p>
+                    <!-- <p class="card-text">{{ description }}</p> -->
                     <p class="card-text mr-4 text-success">{{ price }}$</p>
                     <p class="card-text mr-4 text-success">In Stock:{{ stock }}</p>
 
@@ -34,7 +34,8 @@ export default {
 }
 
 img{
-    width: 100%;
-    height: 130px;
+    width: 80%;
+    margin: 0 auto;
+    height: 150px;
 }
 </style>
